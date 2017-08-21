@@ -25,7 +25,7 @@ func TestRegex(t *testing.T) {
 	for i, tc := range tcs {
 		actual := rx.Match([]byte(tc))
 		assert.Equal(t, expected[i], actual)
-		fmt.Printf("%s:\n%v\n\n", tc, found)
+		fmt.Printf("%s:\n%v\n\n", tc, actual)
 	}
 
 }

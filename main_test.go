@@ -16,9 +16,10 @@ func TestRegex(t *testing.T) {
 		"615 °C",
 		"born in the 🇺🇸",
 		"asdf",
+		"1",
 	}
 	var expected = []bool{
-		false, true, true, true, true, false,
+		false, true, true, false, true, false, false,
 	}
 
 	rx, err = regexp.Compile(emojiRx)

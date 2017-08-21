@@ -8,11 +8,12 @@ import (
 )
 
 var (
-	rx        *regexp.Regexp
-	err       error
-	found, ok bool
-	results   []string
-	s         string
+	rx      *regexp.Regexp
+	err     error
+	ok      bool
+	results []string
+	s       string
+	n       int
 )
 
 func main() {
@@ -23,10 +24,10 @@ func main() {
 
 	scanner := bufio.NewScanner(os.Stdin)
 	for scanner.Scan() {
+		n++
 		s = scanner.Text()
 		ok = rx.MatchString(s)
 		if ok {
-			found = true
 			results = append(results, s)
 		}
 	}
@@ -37,7 +38,7 @@ func main() {
 		os.Stderr.WriteString("Found no emoji\n")
 		os.Exit(1)
 	}
-	fmt.Println("Found emoji:")
+	fmt.Printf("%v total lines of input, %v lines contained emoji:\n", n, len(results))
 	for _, s := range results {
 		fmt.Println(s)
 	}
